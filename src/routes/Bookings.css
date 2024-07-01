@@ -24,6 +24,7 @@ body{
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
     padding: 0 2rem;
+	margin-bottom: 50px;
 }
 
 .img{
@@ -46,6 +47,7 @@ body{
 
 form{
 	width: 360px;
+	margin-bottom: 0px;
 }
 
 .login-content img{
@@ -56,7 +58,7 @@ form{
 	margin: 15px 0;
 	color: #333;
 	text-transform: uppercase;
-	font-size: 1.8rem;
+	font-size: 18px;
 }
 
 .login-content .input-div{
@@ -139,7 +141,7 @@ form{
 	outline: none;
 	background: none;
 	padding: 0.5rem 0.7rem;
-	font-size: 1.2rem;
+	font-size: 15px;
 	color: #555;
 	font-family: 'poppins', sans-serif;
 }
@@ -194,12 +196,23 @@ form{
 	background-position: right;
   background-color: orange;
 }
+.signUp a{
+ margin-left: 280px;
+ font-size: 12px;
+ cursor: pointer;
+	
+}
 
 
 @media screen and (max-width: 1050px){
 	.container{
 		grid-gap: 5rem;
 	}
+	.signUp a{
+		margin-left: 0px;
+		font-size: 12px;
+		   
+	   }
 }
 
 @media screen and (max-width: 1000px){
@@ -208,13 +221,19 @@ form{
 	}
 
 	.login-content h2{
-        font-size: 2.4rem;
+        font-size: 1.0rem;
         margin: 8px 0;
 	}
 
 	.img img{
 		width: 400px;
 	}
+	.signUp a{
+		margin-left: -5px;
+		font-size: 12px;
+	
+		   
+	   }
 }
 
 @media screen and (max-width: 900px){
@@ -233,4 +252,9 @@ form{
 	.login-content{
 		justify-content: center;
 	}
+	.signUp a{
+		margin-left: -5px;
+		font-size: 12px;
+		   
+	   }
 }

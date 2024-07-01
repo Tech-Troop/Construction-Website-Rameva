@@ -1,108 +1,96 @@
-import React from 'react'
+import React, {useState} from 'react'
+import  "./Bookings.css"
+import bg from "../images/bg1.jpg"
+import avatar from "../images/avat.jpg"
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { auth} from '../config/firebase'
+import 'react-toastify/dist/ReactToastify.css'
+import {toast } from  'react-toastify'
 
-function SignUp() {
+
+
+
+
+
+
+  
+
+function Bookings() {
+  const [email, setEmail] = useState ("")
+  const [password, setPassword] = useState ("")
+  const[Username, setUsername] = useState("")
+  
+
+
+
+const handleSignup = async(e)=>{
+  e.preventDefault();
+
+  try{
+   await createUserWithEmailAndPassword(auth,email,password)
+    const user = auth.currentUser;
+    console.log(user)
+
+  
+
+    console.log("User is registered succesfully")
+    toast.success('User registered Succesfully')
+
+  }catch(error){
+    console.log(error.message)
+    toast.error('Invalid Credentials')
+  }
+
+}
+
+
   return (
     <div class="container">
-    <div class="forms-container">
-      <div class="signin-signup">
-       
-        <form action="#" class="sign-up-form">
-          <h2 class="title">Sign up</h2>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" />
-          </div>
-          <input type="submit" class="btn" value="Sign up" />
-          <p class="social-text">Or Sign up with social platforms</p>
-          <div class="social-media">
-            <a href="#" class="social-icon">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-google"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </form>
-
-
-        <form action="#" class="sign-in-form">
-          <h2 class="title">Sign Up</h2>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input type="email" placeholder="Email" />
-          </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" />
-          </div>
-          <input type="submit" value="SignUp" class="btn solid"  />
-          <p class="social-text">Or Sign in with social platforms</p>
-          <div class="social-media">
-            <a href="#" class="social-icon">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-google"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </form>
-
-      </div>
-    </div>
-
-    <div class="panels-container">
-      <div class="panel left-panel">
-        <div class="content">
-          <h3>Already Signed Up ?</h3>
-          <p>
-          Welcome to Rameva's Construction Appointment Booking 
-          </p>
-          <button class="btn transparent" id="sign-up-btn">
-            <a href='/Bookings'>Sign In</a>
-          </button>
+		<div class="img">
+			<img src={bg}/>
+		</div>
+		<div class="login-content">
+			<form onSubmit={handleSignup} action="index.html">
+				<img src={avatar}/>
+				<h2 class="title">Welcome</h2>
+        <div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+                 
+           		   <div class="div">
+           		   	
+           		   		<input type="text" class="input" placeholder='email' onChange={(e)=>setEmail(e.target.value)}/>
+           		   </div>
+                 </div>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+                 
+           		   <div class="div">
+           		   	
+           		   		<input type="text" class="input" placeholder='Username'  onChange={(e)=>setUsername(e.target.value)}/>
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<input type="password" class="input" placeholder='password' onChange={(e)=>setPassword(e.target.value)}/>
+            	   </div>
+				 
+            	</div >
+				<div class='signUp'>
+					<a href='/Bookings'>Login</a>
+				   </div>
+            	<input type="submit" class="btn" value="SignUp"/>
+            </form>
         </div>
-        <img src="img/log.svg" class="image" alt="" />
-      </div>
-      <div class="panel right-panel">
-        <div class="content">
-          <h3>One of us ?</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            laboriosam ad deleniti.
-          </p>
-          <button class="btn transparent" id="sign-in-btn">
-            Sign in
-          </button>
-        </div>
-        <img src=''class="image" alt="" />
-      </div>
     </div>
-  </div>
+  
   )
 }
 
-export default SignUp
+export default Bookings
